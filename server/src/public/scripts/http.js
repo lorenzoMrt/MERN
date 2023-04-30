@@ -1,7 +1,7 @@
-var Http = (() => {
+let Http = (() => {
   // Setup request for json
-  var getOptions = (verb, data) => {
-    var options = {
+  let getOptions = (verb, data) => {
+    let options = {
       dataType: 'json',
       method: verb,
       headers: {

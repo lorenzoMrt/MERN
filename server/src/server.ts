@@ -1,7 +1,3 @@
-/**
- * Setup express server.
- */
-
 import cookieParser from 'cookie-parser';
 import morgan from 'morgan';
 import path from 'path';
@@ -20,6 +16,7 @@ import HttpStatusCodes from '@src/constants/HttpStatusCodes';
 import { NodeEnvs } from '@src/constants/misc';
 import { RouteError } from '@src/other/classes';
 
+import cors from 'cors';
 
 // **** Variables **** //
 
@@ -36,11 +33,16 @@ app.use(cookieParser(EnvVars.CookieProps.Secret));
 // Show routes called in console during development
 if (EnvVars.NodeEnv === NodeEnvs.Dev) {
   app.use(morgan('dev'));
+  app.use(cors())
 }
 
+let corsOptions = {
+  origin : ['http://0.0.0.0:3000'],
+}
 // Security
 if (EnvVars.NodeEnv === NodeEnvs.Production) {
   app.use(helmet());
+  app.use(cors(corsOptions))
 }
 
 // Add APIs, must be after middleware
