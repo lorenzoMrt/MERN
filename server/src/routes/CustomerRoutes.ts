@@ -1,6 +1,6 @@
 import HttpStatusCodes from '@src/constants/HttpStatusCodes';
 
-import UserService from '@src/services/CustomerService';
+import CustomerService from '@src/services/CustomerService';
 import { ICustomer } from '@src/models/Customer';
 import { IReq, IRes } from './types/express/misc';
 
@@ -11,25 +11,25 @@ import { IReq, IRes } from './types/express/misc';
  * Get all users.
  */
 async function getAll(_: IReq, res: IRes) {
-  const users = await UserService.getAll();
-  return res.status(HttpStatusCodes.OK).json({ users });
+  const customers = await CustomerService.getAll();
+  return res.status(HttpStatusCodes.OK).json({ customers });
 }
 
 /**
  * Add one user.
  */
-async function add(req: IReq<{user: ICustomer}>, res: IRes) {
-  const { user } = req.body;
-  await UserService.addOne(user);
+async function add(req: IReq<{customer: ICustomer}>, res: IRes) {
+  const { customer: user } = req.body;
+  await CustomerService.addOne(user);
   return res.status(HttpStatusCodes.CREATED).end();
 }
 
 /**
  * Update one user.
  */
-async function update(req: IReq<{user: ICustomer}>, res: IRes) {
-  const { user } = req.body;
-  await UserService.updateOne(user);
+async function update(req: IReq<{customer: ICustomer}>, res: IRes) {
+  const { customer: user } = req.body;
+  await CustomerService.updateOne(user);
   return res.status(HttpStatusCodes.OK).end();
 }
 
