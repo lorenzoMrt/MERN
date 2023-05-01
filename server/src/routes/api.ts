@@ -2,49 +2,47 @@ import { Router } from 'express';
 import jetValidator from 'jet-validator';
 
 import Paths from './constants/Paths';
-import User from '@src/models/User';
-import UserRoutes from './UserRoutes';
+import Customer from '@src/models/Customer';
+import CustomerRoutes from './CustomerRoutes';
 
 
-// **** Variables **** //
 
 const apiRouter = Router(),
   validate = jetValidator();
 
 
-// ** Add UserRouter ** //
 
-const userRouter = Router();
+const customerRouter = Router();
 
 // Get all users
-userRouter.get(
-  Paths.Users.Get,
-  UserRoutes.getAll,
+customerRouter.get(
+  Paths.Customers.Get,
+  CustomerRoutes.getAll,
 );
 
 // Add one user
-userRouter.post(
-  Paths.Users.Add,
-  validate(['user', User.isUser]),
-  UserRoutes.add,
+customerRouter.post(
+  Paths.Customers.Add,
+  validate(['customer', Customer.isCustomer]),
+  CustomerRoutes.add,
 );
 
 // Update one user
-userRouter.put(
-  Paths.Users.Update,
-  validate(['user', User.isUser]),
-  UserRoutes.update,
+customerRouter.put(
+  Paths.Customers.Update,
+  validate(['customer', Customer.isCustomer]),
+  CustomerRoutes.update,
 );
 
-// Delete one user
-userRouter.delete(
-  Paths.Users.Delete,
-  validate(['id', 'number', 'params']),
-  UserRoutes.delete,
-);
+// // Delete one user
+// userRouter.delete(
+//   Paths.Users.Delete,
+//   validate(['id', 'number', 'params']),
+//   UserRoutes.delete,
+// );
 
 // Add UserRouter
-apiRouter.use(Paths.Users.Base, userRouter);
+apiRouter.use(Paths.Customers.Base, customerRouter);
 
 
 // **** Export default **** //

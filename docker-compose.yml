@@ -18,30 +18,30 @@ services:
       - mongo
     networks:
       - mern-app-network
-  # mongo:
-  #   image: mongo
-  #   volumes:
-  #     - data-volume:/data/db
-  #   ports:
-  #     - "27017:27017"
-  #   networks:
-  #     - mern-app-network
-  client:
-    build:
-      context: ./client
-      dockerfile: Dockerfile
-    image: myapp-client
-    container_name: myapp-react-client
-    command: yarn start
+  mongo:
+    image: mongo
     volumes:
-      - ./client/:/usr/app
-      - /usr/app/node_modules
-    depends_on:
-      - server
+      - data-volume:/data/db
     ports:
-      - "3000:3000"
+      - "27017:27017"
     networks:
-      - app-network
+      - mern-app-network
+  # client:
+  #   build:
+  #     context: ./client
+  #     dockerfile: Dockerfile
+  #   image: myapp-client
+  #   container_name: myapp-react-client
+  #   command: yarn start
+  #   volumes:
+  #     - ./client/:/usr/app
+  #     - /usr/app/node_modules
+  #   depends_on:
+  #     - server
+  #   ports:
+  #     - "3000:3000"
+  #   networks:
+  #     - app-network
 
 networks:
     app-network:

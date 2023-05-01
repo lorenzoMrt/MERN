@@ -4,10 +4,10 @@ import insertUrlParams from 'inserturlparams';
 
 import app from '@src/server';
 
-import UserRepo from '@src/repos/UserRepo';
+import UserRepo from '@src/repos/CustomerRepo';
 import User from '@src/models/User';
 import HttpStatusCodes from '@src/constants/HttpStatusCodes';
-import { USER_NOT_FOUND_ERR } from '@src/services/UserService';
+import { USER_NOT_FOUND_ERR } from '@src/services/CustomerService';
 import FullPaths from '@src/routes/constants/FullPaths';
 
 import { TReqBody } from 'spec/support/types';
@@ -21,7 +21,7 @@ const {
   Add,
   Update,
   Delete,
-} = FullPaths.Users;
+} = FullPaths.Customers;
 
 // StatusCodes
 const {

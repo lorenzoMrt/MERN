@@ -10,9 +10,10 @@ displayUsers();
  */
 function displayUsers() {
   Http
-    .get('/api/users/all')
+    .get('/api/customers/all')
     .then(resp => resp.json())
     .then((resp) => {
+      console.log(resp)
       var allUsers = resp.users;
       // Empty the anchor
       var allUsersAnchor = document.getElementById('all-users-anchor');
@@ -33,7 +34,6 @@ function getUserDisplayEle(user) {
 
       <div class="normal-view">
         <div>Name: ${user.name}</div>
-        <div>Email: ${user.email}</div>
         <button class="edit-user-btn" data-user-id="${user.id}" data-user-role="${user.role}">
           Edit
         </button>

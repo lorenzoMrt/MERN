@@ -38,10 +38,12 @@
     "jet-validator": "^1.1.1",
     "jsonfile": "^6.1.0",
     "module-alias": "^2.2.2",
+    "mongodb": "^5.3.0",
     "morgan": "^1.10.0",
     "ts-command-line-args": "^2.5.0"
   },
   "devDependencies": {
+    "@types/mongodb": "^4.0.7",
     "@types/cookie-parser": "^1.4.3",
     "@types/cors": "^2.8.13",
     "@types/express": "^4.17.17",
