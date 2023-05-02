@@ -33,16 +33,18 @@ app.use(cookieParser(EnvVars.CookieProps.Secret));
 // Show routes called in console during development
 if (EnvVars.NodeEnv === NodeEnvs.Dev) {
   app.use(morgan('dev'));
-  app.use(cors())
+  app.use(cors());
 }
 
-let corsOptions = {
-  origin : ['http://0.0.0.0:3000'],
-}
+const corsOptions = {
+  origin : [
+    'http://localhost:8080', 
+    'https://lighthearted-paprenjak-ffb3ca.netlify.app/'],
+};
 // Security
 if (EnvVars.NodeEnv === NodeEnvs.Production) {
   app.use(helmet());
-  app.use(cors(corsOptions))
+  app.use(cors(corsOptions));
 }
 
 // Add APIs, must be after middleware
