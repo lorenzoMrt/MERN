@@ -24,23 +24,7 @@ async function add(req: IReq<{customer: ICustomer}>, res: IRes) {
   return res.status(HttpStatusCodes.CREATED).end();
 }
 
-/**
- * Update one user.
- */
-async function update(req: IReq<{customer: ICustomer}>, res: IRes) {
-  const { customer: user } = req.body;
-  await CustomerService.updateOne(user);
-  return res.status(HttpStatusCodes.OK).end();
-}
 
-// /**
-//  * Delete one user.
-//  */
-// async function delete_(req: IReq, res: IRes) {
-//   const id = +req.params.id;
-//   await UserService.delete(id);
-//   return res.status(HttpStatusCodes.OK).end();
-// }
 
 
 // **** Export default **** //
@@ -48,5 +32,4 @@ async function update(req: IReq<{customer: ICustomer}>, res: IRes) {
 export default {
   getAll,
   add,
-  update,
 } as const;

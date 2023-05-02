@@ -9,7 +9,7 @@ import orm from './Orm';
  */
 async function getOne(name: string): Promise<ICustomer | null> {
   const db = await orm.openDb();
-  const result = await db.findOne({name: name})
+  const result = await db.findOne({name: name});
   return result as unknown as ICustomer;
 }
 
@@ -18,7 +18,7 @@ async function getOne(name: string): Promise<ICustomer | null> {
  */
 async function persists(name: string): Promise<boolean> {
   const db = await orm.openDb();
-  const res = await db.findOne({name: name})
+  const res = await db.findOne({name: name});
   return res !== null;
 }
 
@@ -37,7 +37,7 @@ async function getAll(): Promise<ICustomer[]> {
 async function add(customer: ICustomer): Promise<string> {
   const db = await orm.openDb();
   const result = await db.insertOne(customer);
-  return result.insertedId.toJSON();
+  return result.insertedId.toString();
 }
 
 /**

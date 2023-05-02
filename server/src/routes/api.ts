@@ -27,19 +27,6 @@ customerRouter.post(
   CustomerRoutes.add,
 );
 
-// Update one user
-customerRouter.put(
-  Paths.Customers.Update,
-  validate(['customer', Customer.isCustomer]),
-  CustomerRoutes.update,
-);
-
-// // Delete one user
-// userRouter.delete(
-//   Paths.Users.Delete,
-//   validate(['id', 'number', 'params']),
-//   UserRoutes.delete,
-// );
 
 // Add UserRouter
 apiRouter.use(Paths.Customers.Base, customerRouter);
